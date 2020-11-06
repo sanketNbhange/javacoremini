@@ -1,0 +1,41 @@
+portal home 
+image, welcome message (Register, login)
+1. flow
+A. admin (home, head management, logout)
+a. crud operations on head (add/delete/update/display)
+
+ 
+
+B. head (home, complaints, logout)
+a. view complaints(complainid, userid, complain desc, user remark, screenshot,  head remark, dropdown(pending, closed) take
+action, dropdown(dept) transfer complain)
+
+ 
+
+C. citizens(home, complaints, view complaints, logout)
+a. make complaints --> form
+b. view complaints --> 
+
+ 
+
+table
+--> user(userid, username, password, email, phone, role(admin, head, citizen), deptid) 
+    --> select * from users where username=? and password = ? 
+    if(role == 'head' && deptid=null){ --> citizen }
+--> complain(complainid, userid, deptid, des, user remark, head remark, image, status)
+    --> select * from complain where deptid = ? and status='pending'
+--> department(did, deptname, userid)
+
+ui
+--> admin --> home, head management, add head, logout
+--> head --> home, view complaints(list of complain from own head and which are pending), logout
+--> citizens --> home, complaints(show complain form), view complaints(list of complain in table format), logout)
+
+ 
+
+coding
+--> controller --> single / multiple controller
+--> domain classes --> user, complain
+--> service classes --> userservice (register, update, delete, display), complainservice(registercomplain, updatestatus,
+updatedeptid, updatestatusbycitizens)
+--> dao classes--> userdao, complaindao
